@@ -1,0 +1,47 @@
+{% block content %}
+<form action="/urlexpander/add" method="POST" class="form-horizontal">{% csrf_t$
+    <fieldset>
+        <div class="form-group">
+            <label class="col-xs-4 col-sm-4 col-md-4 control-label" for="url-in$
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                {{ form.short_url }}
+{% block content %}
+<form action="/urlexpander/add" method="POST" class="form-horizontal">{% csrf_t$
+    <fieldset>
+        <div class="form-group">
+            <label class="col-xs-4 col-sm-4 col-md-4 control-label" for="url-in$
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                {{ form.short_url }}
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <button type="submit" id="submit" class="btn btn-primary">Submi$
+            </div>
+        </div>
+    </fieldset>
+</form>
+<div class="table-responsive">
+    <table class="table table-striped table-hover table-bordered">
+        <thead>
+            <tr>
+                <th>Original URL</th>
+                <th>Expanded URL</th>
+                <th>Title</th>
+                <th>Status Code</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entry in entries %}
+            <tr>
+                <td>{{ entry.short_url }}</td>
+                <td>{{ entry.long_url }}</td>
+                <td>{{ entry.title }}</td>
+                <td>{{ entry.status }}</td>
+                <td><button onclick="location.href='/urlexpander/delete/{{entry$
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock content %}
+

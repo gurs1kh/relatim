@@ -1,0 +1,44 @@
+{% extends "relatim/base.html" %}
+
+{% block content %}
+<form action="/relatim/add" method="POST" class="form-horizontal">{% csrf_token %}
+	<fieldset>
+		<div class="form-group">
+			<label class="col-xs-4 col-sm-4 col-md-4 control-label" for="title-input">Title</label>
+			<div class="col-xs-4 col-sm-4 col-md-4">
+				{{ form.title }}
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-xs-4 col-sm-4 col-md-4 control-label" for="url-input">URL</label>
+			<div class="col-xs-4 col-sm-4 col-md-4">
+				{{ form.url }}
+			</div>
+		</div>
+		<div class="form-group">
+			<div class="col-xs-4 col-sm-4 col-md-4">
+				<button type="submit" id="submit" class="btn btn-primary">Submit</button>
+			</div>
+		</div>
+	</fieldset>
+</form>
+<div class="table-responsive">
+	<table class="table table-striped table-hover table-bordered">
+		<thead>
+			<tr>
+				<th>Title</th>
+				<th>Image</th>
+			</tr>
+		</thead>
+		<tbody>
+		{% for image in images %}
+			<tr>
+				<td>{{ image.title }}</td>
+				<td><img class="thumbnail" src="{{ image.url }}" /></td>
+				<td><button onclick="location.href='/relatim/delete/{{image.id}}'">Delete</button></td>
+			</tr>
+		{% endfor %}
+		</tbody>
+	</table>
+</div>
+{% endblock content %}
