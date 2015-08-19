@@ -29,7 +29,7 @@ def image_add(request):
 		querystring = {'url': image.url, 'version': '2'}
 		headers = {
 			'accept': "application/json",
-			'authorization': ""
+			'authorization': "Basic YWNjXzQ0ODZkZjA5ODg5YTczYzplOTFlMzllNzA4ZGVjYjQxNjk5YTY2MTdhNThiZWM3OA=="
 		}
 		r = requests.request('GET', imagga_url, headers=headers, params=querystring)
 		data = r.json()['results'][0]['tags']
