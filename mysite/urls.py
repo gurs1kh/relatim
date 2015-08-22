@@ -9,7 +9,7 @@ urlpatterns = [
 
     url(r'^admin', include(admin.site.urls)),
     url(r'^login', auth_views.login),
-    url(r'^relatim', include('myapp.urls')),
+    url(r'^', include('myapp.urls')),
 ]
 
 
