@@ -1,3 +1,4 @@
+
 {% extends "relatim/base.html" %}
 
 {% block content %}
@@ -34,7 +35,7 @@
 		{% for image in images %}
 			<tr>
 				<td>{{ image.title }}</td>
-				<td><img class="thumbnail" src="{{ image.url }}" /></td>
+				<td><a href="id/{{image.id}}"><img class="thumbnail" src="{{ image.url }}" /></a></td>
 				<td><button onclick="location.href='/relatim/delete/{{image.id}}'">Delete</button></td>
 			</tr>
 		{% endfor %}
