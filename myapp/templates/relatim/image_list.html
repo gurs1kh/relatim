@@ -34,7 +34,7 @@
 		{% for image in images %}
 			<tr>
 				<td>{{ image.title }}</td>
-				<td><img class="thumbnail" src="{{ image.url }}" /></td>
+				<td><img class="thumbnail" src="{{ image.url }}" width="100px" height="100px" /></td>
 				<td><button onclick="location.href='/relatim/delete/{{image.id}}'">Delete</button></td>
 			</tr>
 		{% endfor %}

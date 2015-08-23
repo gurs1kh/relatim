@@ -10,6 +10,7 @@ urlpatterns = [
     url(r'^admin', include(admin.site.urls)),
     url(r'^login', auth_views.login),
     url(r'^', include('myapp.urls')),
+    url(r'^logout', auth_views.logout, name='logout'),
 ]
 
 
