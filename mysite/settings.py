@@ -108,5 +108,3 @@ USE_TZ = True
 
 STATIC_URL = '/static/relatim/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-
-
