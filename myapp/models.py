@@ -7,7 +7,7 @@ class Image(models.Model):
 	title = models.CharField(max_length=70)
 	url = models.CharField(max_length=2083)
 	related_images = JSONField()
-	created_date = models.DateTimeField(default=timezone.now)
+	created_date = models.DateTimeField(default=timezone.now())
 
 	def publish(self):
 		if not self.url.startswith("http"):
@@ -40,7 +40,7 @@ class Image(models.Model):
 					related_image = {'url': data2[i]['url'], 'thumbnail': data2[i]['tbUrl']}
 					contains_image = False
 					for j in range(0, len(related_images)- 1):
-						if related_images[j]['url'] == related_image['url'] or related_images[j]['thumbnail'] == related_image['thumbnail']:
+						if related_images[j] == related_image:
 							contains_image = True
 					if not contains_image:
 						related_images.append(related_image)
