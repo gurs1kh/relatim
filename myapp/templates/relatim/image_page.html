@@ -3,13 +3,25 @@
 {% block content %}
 <h2>{{image.title}}</h2>
 <div>
-	<img src="{{image.url}}" />
+	<img src="{{image.url}}" height="400px" width="400px" />
 </div>
-<ul>
-{% for related_image in related_images %}
-	<li>
-        <a href="{{related_image.url}}"><img src="{{related_image.thumbnail}}" /></a>
-	</li>
-{% endfor %}
-</ul>
+
+<div class="table-responsive">
+	<table class="table table-striped table-hover table-bordered">
+		<thead>
+			<tr>
+				<th>Image</th>
+				<th>URL</th>
+			</tr>
+		</thead>
+		<tbody>
+		{% for related_image in related_images %}
+			<tr>
+				<td><img class="thumbnail" src="{{ related_image.url }}" width="100px" height="100px"/></td>
+				<td><a href=" {{ related_image.url }} ">{{ related_image.url }}</a></td>
+			</tr>
+		{% endfor %}
+		</tbody>
+	</table>
+
 {% endblock content %}

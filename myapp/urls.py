@@ -12,4 +12,3 @@ urlpatterns = [
 	url(r'^api/id/(?P<id>[0-9]+)$', views.api_details, name='api_details'),
 	url(r'^api/delete/(?P<id>[0-9]+)$', views.api_delete, name='api_delete'),
 ]
-
