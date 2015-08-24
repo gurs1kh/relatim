@@ -5,19 +5,19 @@ from .models import Image
 from .forms import ImageForm
 import requests, json
 
-#@login_required(login_url="/relatim/login")
+@login_required(login_url="/relatim/login")
 def image_list(request):
 	images = Image.objects.order_by('created_date')
 	form = ImageForm()
 	return render(request, 'relatim/image_list.html', {'images': images, 'form': form})
 
-#@login_required(login_url="/relatim/login")
+@login_required(login_url="/relatim/login")
 def image_page(request, id):
 	image = Image.objects.get(pk=id)
 	related_images = json.loads(image.related_images);
 	return render(request, 'relatim/image_page.html', {'image': image, 'related_images': related_images})
 
-#@login_required(login_url="/relatim/login")
+@login_required(login_url="/relatim/login")
 def image_add(request):
 	form = ImageForm(request.POST)
 	if form.is_valid():
@@ -29,7 +29,11 @@ def image_add(request):
 		querystring = {'url': image.url, 'version': '2'}
 		headers = {
 			'accept': "application/json",
+<<<<<<< HEAD
 			'authorization': "Basic YWNjXzQ0ODZkZjA5ODg5YTczYzplOTFlMzllNzA4ZGVjYjQxNjk5YTY2MTdhNThiZWM3OA=="
+=======
+			'authorization': "Basic YWNjX2FmMWM5MjI3NDMyMDUxMTplY2E4Y2Y2YmRlNGVjMTEzZjZhYTcwMWU4YzczMjNjMA=="
+>>>>>>> 7fed6307bc9559a6e269985f6697571c6d7531c0
 		}
 		r = requests.request('GET', imagga_url, headers=headers, params=querystring)
 		data = r.json()['results'][0]['tags']
@@ -64,7 +68,7 @@ def image_add(request):
 		image.save()
 	return redirect('myapp.views.image_list')
 
-#@login_required(login_url="/relatim/login")
+@login_required(login_url="/relatim/login")
 def image_delete(request, id):
 	Image.objects.get(pk=id).delete()
 	return redirect('myapp.views.image_list')
